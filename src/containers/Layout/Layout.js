@@ -27,7 +27,7 @@ class Layout extends Component {
             let value;
             let isNumeric = false;
             while(!isNumeric) {
-                if(isNaN(promptBox) || promptBox === null || promptBox === "") {
+                if(isNaN(promptBox.trim()) || promptBox === null || promptBox.trim() === "") {
                     alert("Please enter correctly value!")
                     promptBox = prompt("Please enter number of Items to transformation", "From 1-120");
                 } else {
