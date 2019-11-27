@@ -8,7 +8,7 @@ class Layout extends Component {
     state = {
         isExtracted: false,
         isTransformated: false,
-        isLoadedToDb: false,
+        isLoadedToDB: false,
         showExtractorExtend: false,
         showTransformatorExtend: false,
         numberOfItems : 0
@@ -16,17 +16,13 @@ class Layout extends Component {
 
     toggleExtractorOptions = () => {  
         const doesShow = this.state.showExtractorExtend;
-        const doesExtracted = this.state.isExtracted;
-        this.setState( { showExtractorExtend: !doesShow} );
-        this.setState( { isExtracted: !doesExtracted } );
+        this.setState( { showExtractorExtend: !doesShow } );
     }
 
     togglePromptBox = () => {
-        /*const isExtracted = this.state.isExtracted;
-        if(!isExtracted) {
-            alert("Please extract items first");
-            return;
-        }*/
+        const doesExtracted = this.state.isExtracted;
+        console.log(doesExtracted);
+        //if(doesExtracted) {
             let promptBox = prompt("Please enter number of Items to transformation", "From 1-120");
             let value;
             let isNumeric = false;
@@ -40,8 +36,30 @@ class Layout extends Component {
                 }
             } 
             const doesShow = this.state.showTransformatorExtend;
-            this.setState( { showTransformatorExtend: !doesShow } );
-            this.setState( { numberOfItems: value } );
+            this.setState( {
+                showTransformatorExtend: !doesShow,
+                numberOfItems: value 
+            } );
+       /* } else {
+            alert("Please extract items")
+            return;
+        }*/
+
+    }
+
+    changeStatusOfExtractor = () => {
+        const doesExtracted = this.state.isExtracted;
+        this.setState( { isExtracted: !doesExtracted } );
+    }
+
+    changeStatusOfTransformator = () => {
+        const doesTransformated = this.state.isTransformated;
+        this.setState( { isTransformated: !doesTransformated } );
+    }
+
+    changeStatusOfLoader = () => {
+        const doesLoadedToDB = this.state.isLoadedToDB;
+        this.setState( { isLoadedToDB: !doesLoadedToDB } );
     }
 
     render() {
@@ -52,8 +70,14 @@ class Layout extends Component {
         if ( this.state.showExtractorExtend ) {
             conditionalExtractorButtons = (
                 <div>
-                    <Button value="Default view" call="http://localhost:8081/getExtractedItems"/>
-                    <Button value="Formatted view" call="http://localhost:8081/getExtractedItems"/>
+                    <Button 
+                        value="Default view"
+                        call="http://localhost:8081/getExtractedItems"
+                        clicked={this.changeStatusOfExtractor}/>
+                    <Button 
+                        value="Formatted view" 
+                        call="http://localhost:8081/getExtractedItems" 
+                        clicked={this.changeStatusOfExtractor}/>
                 </div>
             );
         }
@@ -62,8 +86,14 @@ class Layout extends Component {
             let link = "http://localhost:8081/getTransformedItems/" + this.state.numberOfItems
             conditionalTransformatorButtons = (
                 <div>
-                    <Button value="Default view" call={link}/>
-                    <Button value="Formatted view" call={link}/>
+                    <Button 
+                        value="Default view"
+                        call={link}
+                        clicked={this.changeStatusOfTransformator}/>
+                    <Button 
+                        value="Formatted view"
+                        call={link}
+                        clicked={this.changeStatusOfTransformator}/>
                 </div>
             );
         }
@@ -71,14 +101,27 @@ class Layout extends Component {
         return (
             <Auxiliary>
                 <h1>ETL App</h1>
-                <Button value="Extract" clicked={this.toggleExtractorOptions} />
+                <Button 
+                    value="Extract"
+                    clicked={this.toggleExtractorOptions} />
                 {conditionalExtractorButtons}
-                <Button value="Transform" clicked={this.togglePromptBox}/>
+                <Button 
+                    value="Transform" 
+                    clicked={this.togglePromptBox}/>
                 {conditionalTransformatorButtons}
-                <Button value="Load" call="http://localhost:8081/getLoadedItems"/>
-                <Button value="ETL" call="http://localhost:8081/getExtractedTransformedAndLoadedItems/20"/>
-                <Button value="Export CSV file" call="http://localhost:8081/getBooksCSV"/>
-                <Button value="Clear DB" call="http://localhost:8081/deleteAllItems"/>
+                <Button 
+                    value="Load" 
+                    call="http://localhost:8081/getLoadedItems"
+                    clicked={this.changeStatusOfLoader}/>
+                <Button 
+                    value="ETL" 
+                    call="http://localhost:8081/getExtractedTransformedAndLoadedItems/20"/>
+                <Button 
+                    value="Export CSV file" 
+                    call="http://localhost:8081/getBooksCSV"/>
+                <Button 
+                    value="Clear DB" 
+                    call="http://localhost:8081/deleteAllItems"/>
             </Auxiliary>     
         );
     }
