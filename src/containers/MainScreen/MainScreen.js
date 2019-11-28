@@ -16,7 +16,6 @@ class MainScreen extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">ETL App</Link></li>
                             <li><Link to="/extract">Extract</Link></li>
                             <li><Link to="/transform">Transform</Link></li>
                             <li><Link to="/load">Load</Link></li>
@@ -33,8 +32,6 @@ class MainScreen extends Component {
                <Route path="/etl" component={ETL} />
                <Route path="/export-csv" component={Exporter} />
                <Route path="/clean-db" component={Cleaner} />
-
-
             </div>            
         );
     }
