@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-        <Link to="/" exact><h1>ETL App</h1></Link>
+        <Link to="/" exact="true"><h1>ETL App</h1></Link>
           <MainScreen />
         </div>
       </BrowserRouter> 
