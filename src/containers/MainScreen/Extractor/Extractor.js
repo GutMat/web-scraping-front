@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Node from '../../../components/Node/Node'
-import axios from 'axios'
+import ReactJson from 'react-json-view'
+import axios from 'axios';
+
 
 class Extractor extends Component {
 
@@ -15,11 +16,11 @@ class Extractor extends Component {
     }
 
    render () {
+
     return (
         <div>
             <p>Extractor</p>
-            <Node />
-            {this.state.nodes}
+            <ReactJson src={this.state.nodes} theme="summerfruit" />
         </div>
     );
    }
