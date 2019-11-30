@@ -10,7 +10,8 @@ import Loader from '../Loader/Loader'
 import Exporter from '../Exporter/Exporter';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import Layout from '../../components/Layout/Layout';
-import NavigationBar from '../../components/NavigationBar/NavigationBar'
+import NavigationBar from '../../components/NavigationBar/NavigationBar';
+import Footer from '../../components/Footer/Footer';
 
 import './App.css';
 
@@ -31,7 +32,8 @@ class App extends Component {
                   <Route path="/clean-db" component={Cleaner} />
                   <Route component={ErrorPage} />
               </Switch>
-            </Layout>   
+            </Layout>
+            <Footer />   
         </Router>
       </React.Fragment>  
     );
