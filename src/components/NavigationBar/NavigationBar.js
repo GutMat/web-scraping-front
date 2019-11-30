@@ -18,7 +18,7 @@ const Styles = styled.div`
 const navigationBar = () => (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand href="/">ETL App</Navbar.Brand>
+      <Navbar.Brand><Link to="/">ETL App</Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
