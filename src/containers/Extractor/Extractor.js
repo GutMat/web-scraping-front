@@ -21,7 +21,7 @@ class Extractor extends Component {
     return (
         <div>
             <p>Extractor</p>
-            <div className="Nodes"><ReactJson src={this.state.nodes} theme="summerfruit" /></div>
+            <div><ReactJson src={this.state.nodes} theme="summerfruit" /></div>
         </div>
     );
    }

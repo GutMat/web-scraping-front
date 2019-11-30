@@ -19,19 +19,19 @@ class App extends Component {
     return (
       <React.Fragment>
         <Router>
-        <NavigationBar />
-        <Layout>
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/extract" component={Extractor} />
-                <Route path="/transform" component={Transformator} />
-                <Route path="/load" component={Loader} />
-                <Route path="/etl" component={ETL} />
-                <Route path="/export-csv" component={Exporter} />
-                <Route path="/clean-db" component={Cleaner} />
-                <Route component={ErrorPage} />
-            </Switch>
-          </Layout>   
+          <NavigationBar />
+          <Layout>
+              <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/extract" component={Extractor} />
+                  <Route path="/transform" component={Transformator} />
+                  <Route path="/load" component={Loader} />
+                  <Route path="/etl" component={ETL} />
+                  <Route path="/export-csv" component={Exporter} />
+                  <Route path="/clean-db" component={Cleaner} />
+                  <Route component={ErrorPage} />
+              </Switch>
+            </Layout>   
         </Router>
       </React.Fragment>  
     );
