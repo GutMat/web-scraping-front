@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import {  } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 import './Home.css';
 
 const Styles = styled.div`
-width: 30%;
   a {
     color: #bbb;
     &:hover {
@@ -16,9 +15,12 @@ width: 30%;
 `;
 
 const home = (props) => (
-    <Styles className="btn-group-vertical">
-        <h1>ETL App</h1>
-        <Link to="/extract" 
+    <Styles>
+      <div  className="btn-group-vertical Buttons">
+        <Card>
+          <Card.Header as="h2">ETL App</Card.Header>
+        </Card>
+            <Link to="/extract" 
                         className="btn btn-dark btn-lg"
                         role="button">Extract</Link>
         
@@ -38,9 +40,10 @@ const home = (props) => (
                         className="btn btn-dark btn-lg"
                         role="button">Export to CSV</Link>
             
-            <Link to="/clean-csv" 
+            <Link to="/clean-db" 
                         className="btn btn-dark btn-lg"
-                        role="button">Clean database</Link>    
+                        role="button">Clean database</Link>
+      </div>
     </Styles>
 );
 
