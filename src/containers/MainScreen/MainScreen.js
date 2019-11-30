@@ -25,13 +25,13 @@ class MainScreen extends Component {
                         </ul>
                     </nav>
                 </header>
-
-               <Route path="/extract" component={Extractor} />
-               <Route path="/transform" component={Transformator} />
-               <Route path="/load" component={Loader} />
-               <Route path="/etl" component={ETL} />
-               <Route path="/export-csv" component={Exporter} />
-               <Route path="/clean-db" component={Cleaner} />
+                
+                <Route path="/extract" component={Extractor} />
+                <Route path="/transform" component={Transformator} />
+                <Route path="/load" component={Loader} />
+                <Route path="/etl" component={ETL} />
+                <Route path="/export-csv" component={Exporter} />
+                <Route path="/clean-db" component={Cleaner} />
             </div>            
         );
     }

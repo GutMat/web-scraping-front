@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactJson from 'react-json-view'
 import axios from 'axios';
+import './Extractor.css'
 
 
 class Extractor extends Component {
@@ -20,7 +21,7 @@ class Extractor extends Component {
     return (
         <div>
             <p>Extractor</p>
-            <ReactJson src={this.state.nodes} theme="summerfruit" />
+            <div className="Nodes"><ReactJson src={this.state.nodes} theme="summerfruit" /></div>
         </div>
     );
    }
