@@ -1,17 +1,39 @@
 import React, { Component } from 'react';
-import MainScreen from '../MainScreen/MainScreen'
-import { BrowserRouter, Link } from 'react-router-dom'
-import './App.css'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+import Home from '../../components/Home/Home';
+import Extractor from '../Extractor/Extractor';
+import Transformator from '../Transformator/Transformator';
+import ETL from '../ETL/ETL';
+import Cleaner from '../Cleaner/Cleaner';
+import Loader from '../Loader/Loader'
+import Exporter from '../Exporter/Exporter';
+import ErrorPage from '../../components/ErrorPage/ErrorPage';
+import Layout from '../../components/Layout/Layout';
+import NavigationBar from '../../components/NavigationBar/NavigationBar'
+
+import './App.css';
 
 class App extends Component {
   render () {
     return (
-      <BrowserRouter>
-        <div className="App">
-          <Link to="/" exact="true"><h1>ETL App</h1></Link>
-          <MainScreen />
-        </div>
-      </BrowserRouter> 
+      <React.Fragment>
+        <Router>
+        <NavigationBar />
+        <Layout>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/extract" component={Extractor} />
+                <Route path="/transform" component={Transformator} />
+                <Route path="/load" component={Loader} />
+                <Route path="/etl" component={ETL} />
+                <Route path="/export-csv" component={Exporter} />
+                <Route path="/clean-db" component={Cleaner} />
+                <Route component={ErrorPage} />
+            </Switch>
+          </Layout>   
+        </Router>
+      </React.Fragment>  
     );
   }
 }

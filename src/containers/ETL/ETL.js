@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Book from '../../../components/Book/Book'
-import LoadingAnimation from '../../../components/LoadingAnimation/LoadingAnimation'
+import Book from '../../components/Book/Book'
+import LoadingAnimation from '../../components/LoadingAnimation/LoadingAnimation'
 
 
 class ETL extends Component {
