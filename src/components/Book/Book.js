@@ -25,8 +25,8 @@ const book = (props) => (
                 <Card.Text>{props.price} PLN</Card.Text>
                 <div style={{ position: 'absolute', bottom: '15px'}}>
                     <Card.Link href="#">See more info</Card.Link>
-                    <Card.Link href="#">Export CSV</Card.Link>
-                    <Card.Link href="#">Export TXT</Card.Link>
+                    <Card.Link href={props.JSON}>Export JSON</Card.Link>
+                    <Card.Link href={props.CSV}>Export CSV</Card.Link>
                 </div>
             </Card.Body>
         </Card>

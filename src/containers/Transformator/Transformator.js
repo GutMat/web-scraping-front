@@ -26,7 +26,9 @@ class Transformator extends Component {
                 title={book.book.title} 
                 publisher={book.book.publisher}
                 author={book.book.author}
-                price={book.bookPrice} />;
+                price={book.bookPrice}
+                JSON={"http://localhost:8081/getSingleBookJSON/" + book.book.isbn}
+                CSV={"http://localhost:8081/getSingleBookCSV/" + book.book.isbn} />;
         });
 
 
