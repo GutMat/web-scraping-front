@@ -1,0 +1,10 @@
+.View {
+    padding: 30px;
+}
+.Books {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+}

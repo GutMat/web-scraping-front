@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReactJson from 'react-json-view'
+import './Transformator.css'
 
 import Book from '../../components/Book/Book'
 
@@ -23,15 +24,17 @@ class Transformator extends Component {
             return <Book 
                 key={book.book.isbn} 
                 title={book.book.title} 
+                publisher={book.book.publisher}
                 author={book.book.author}
                 price={book.bookPrice} />;
         });
 
 
     return (
-        <div>
-            <p>Transformator</p>
-            {books}
+        <div className="container View">
+                <div className="Books">
+                        {books}
+                </div>     
             <ReactJson src={this.state.books} theme="summerfruit" />
         </div>
     );

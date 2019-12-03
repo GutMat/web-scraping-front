@@ -9,8 +9,10 @@ const Styles = styled.div`
   }
   a, .navbar-brand, .navbar-nav .nav-link {
     color: #bbb;
+    font-weight: bold;
     &:hover {
       color: white;
+      font-weight: bold;
     }
   }
 `;
