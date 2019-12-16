@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactJson from 'react-json-view'
 import './Transformator.css'
+import { Spinner } from 'react-bootstrap';
 
 import Book from '../../components/Book/Book'
 
 class Transformator extends Component {
 
     state = {
-        books: []
+        books: [],
+        isTransformated: false
     }
     componentDidMount() {
+        const doesTransformated = this.state.isTransformated;
         axios.get( 'http://localhost:8081/getTransformedItems/5' )
             .then( response => {
-                this.setState({books: response.data});
+                this.setState({books: response.data,
+                            isTransformated: !doesTransformated});
             });
     }
 
@@ -35,9 +39,14 @@ class Transformator extends Component {
     return (
         <div className="container View">
                 <div className="Books">
-                        {books}
+                        {this.state.isTransformated ? books :
+                        <div style={{textAlign: "center"}}>
+                            <Spinner animation="border" role="status" />
+                            <h4 style={{marginTop: '15px'}}>Transformating data...</h4>
+                        </div>
+                        }
                 </div>     
-            <ReactJson src={this.state.books} theme="summerfruit" />
+            {/*<ReactJson src={this.state.books} theme="summerfruit" />*/}
         </div>
     );
    }
