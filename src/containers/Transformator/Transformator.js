@@ -10,11 +10,14 @@ class Transformator extends Component {
 
     state = {
         books: [],
-        isTransformated: false
+        isTransformated: false,
+        numberToTransform : 3
     }
+
     componentDidMount() {
         const doesTransformated = this.state.isTransformated;
-        axios.get( 'http://localhost:8081/getTransformedItems/5' )
+        let link = "http://localhost:8081/getTransformedItems/" + this.state.numberToTransform;
+        axios.get( link )
             .then( response => {
                 this.setState({books: response.data,
                             isTransformated: !doesTransformated});
