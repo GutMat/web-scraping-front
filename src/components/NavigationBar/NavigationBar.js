@@ -10,8 +10,16 @@ const Styles = styled.div`
   a, .navbar-brand, .navbar-nav .nav-link {
     color: #bbb;
     font-weight: bold;
+    outline: none;
     &:hover {
       color: white;
+      font-weight: bold;
+    }
+    &:focus {
+      text-decoration: underline;
+    }
+    &:visited {
+      color: #bbb;
       font-weight: bold;
     }
   }
@@ -20,44 +28,30 @@ const Styles = styled.div`
 const navigationBar = () => (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand><Link to="/">ETL App</Link></Navbar.Brand>
+      <Navbar.Brand><Link to="/" className="nav-link">ETL App</Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/">Main page</Link>
-            </Nav.Link>
+              <Link to="/" className="nav-link">Main page</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/extract">Extract</Link>
-            </Nav.Link>
+              <Link to="/extract" className="nav-link">Extract</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/transform">Transform</Link>
-            </Nav.Link>
+              <Link to="/transform" className="nav-link">Transform</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/load">Load to database</Link>
-            </Nav.Link>
+              <Link to="/load" className="nav-link">Load to database</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/etl">ETL</Link>
-            </Nav.Link>
+              <Link to="/etl" className="nav-link">ETL</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/export-csv">Export CSV</Link>
-            </Nav.Link>
+              <Link to="/export-csv" className="nav-link">Export CSV</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/clean-db">Clean database</Link>
-            </Nav.Link>
+              <Link  to="/clean-db" className="nav-link">Clean database</Link>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>

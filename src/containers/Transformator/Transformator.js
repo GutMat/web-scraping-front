@@ -23,7 +23,7 @@ class Transformator extends Component {
     
     handleValueChange = (event) => {
         this.setState({numberToTransform: event.target.value});
-     }
+    }
 
     toggleTransformatedItems = () => {  
         const doesEntered = this.state.isEnteredValue;
