@@ -21,11 +21,11 @@ class Loader extends Component {
 
    render (){
     return (
-        <div>
+        <div style={{marginTop: '30px', textAlign: 'center'}}>
             {this.state.isLoaded ?
             <div>
-                <h4>The transformated data has been successfully loaded to database</h4>
-                <h5>Added {this.state.books.length} books to database</h5>
+                <h3>The transformated data has been successfully loaded to database</h3>
+                <h4>Added {this.state.books.length} books to database</h4>
             </div>
             :                         
             <div style={{textAlign: "center"}}>

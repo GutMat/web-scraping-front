@@ -17,10 +17,10 @@ class Cleaner extends Component {
 
    render (){
     return (
-        <div>
+        <div style={{marginTop: '30px', textAlign: 'center'}}>
             {this.state.isDeleted ?
                 <div>
-                    <h4>The data has been successfully deleted from database</h4>
+                    <h3>The data has been successfully deleted from database</h3>
                 </div>
                 :                         
                 <div style={{textAlign: "center"}}>

@@ -5,7 +5,13 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   .navbar {
+    overflow: hidden;
     background-color: #222;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
   }
   a, .navbar-brand, .navbar-nav .nav-link {
     color: #bbb;
