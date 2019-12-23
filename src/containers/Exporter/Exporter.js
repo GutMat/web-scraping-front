@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 class Exporter extends Component {
+
    render (){
     return (
         <div>
-            <p>Exporter</p>
+            <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button">Download CSV</a>
         </div>
     );
    }
