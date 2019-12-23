@@ -20,6 +20,7 @@ class Transformator extends Component {
 
         this.handleValueChange = this.handleValueChange.bind(this);
         this.toggleTransformatedItems = this.toggleTransformatedItems.bind(this);
+        this.loadData = this.loadData.bind(this);
     }
     
     handleValueChange = (event) => {
@@ -81,7 +82,7 @@ class Transformator extends Component {
                                     </Tab>
                                 </Tabs> 
                                 : 
-                                this.loadData()
+                                this.loadData
                             }
                         </div>
                         :
@@ -90,20 +91,21 @@ class Transformator extends Component {
                             <h4 style={{marginTop: '15px'}}>Transformating data...</h4>
                         </div>
                     }
-            </div>
+                </div>
             : 
-            <Form onSubmit={this.toggleTransformatedItems}>
-                <Form.Group>
-                    <Form.Label><h3>Items number</h3></Form.Label>
-                    <Form.Control size="lg" type="number" min="1" max="120" placeholder="Enter the number of items" value={this.state.numberToTransform} onChange={this.handleValueChange}/>
-                    <Form.Text className="text-muted">
-                        Enter the number of items you wanna transform (1-120)
-                    </Form.Text>
-                </Form.Group>
-                <Button variant="dark" type="submit">
-                    Transform items
-                </Button>
-            </Form>}
+                <Form onSubmit={this.toggleTransformatedItems}>
+                    <Form.Group>
+                        <Form.Label><h3>Items number</h3></Form.Label>
+                        <Form.Control size="lg" type="number" min="1" max="120" placeholder="Enter the number of items" value={this.state.numberToTransform} onChange={this.handleValueChange}/>
+                        <Form.Text className="text-muted">
+                            Enter the number of items you wanna transform (1-120)
+                        </Form.Text>
+                    </Form.Group>
+                    <Button variant="dark" type="submit">
+                        Transform items
+                    </Button>
+                </Form>
+            }
         </div>
     );
    }
