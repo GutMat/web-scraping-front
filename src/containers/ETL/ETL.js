@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Book from '../../components/Book/Book'
-import LoadingAnimation from '../../components/LoadingAnimation/LoadingAnimation'
-
 
 class ETL extends Component {
    render (){
@@ -9,7 +7,6 @@ class ETL extends Component {
         <div>
             <p>ETL</p>
             <Book />
-            <LoadingAnimation />
         </div>
     );
    }

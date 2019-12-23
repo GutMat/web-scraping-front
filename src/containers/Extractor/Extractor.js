@@ -20,14 +20,13 @@ class Extractor extends Component {
     state = {
         nodes: []
     }
+
     componentDidMount() {
         axios.get( 'http://localhost:8081/getExtractedItems' )
             .then( response => {
                 this.setState({nodes: response.data});
             });
     }
-
-    
 
    render () {
        let str = this.state.nodes.join();

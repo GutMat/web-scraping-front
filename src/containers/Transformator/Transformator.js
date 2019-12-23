@@ -20,7 +20,6 @@ class Transformator extends Component {
 
         this.handleValueChange = this.handleValueChange.bind(this);
         this.toggleTransformatedItems = this.toggleTransformatedItems.bind(this);
-        this.loadData = this.loadData.bind(this);
     }
     
     handleValueChange = (event) => {
@@ -81,8 +80,7 @@ class Transformator extends Component {
                                         </div>
                                     </Tab>
                                 </Tabs> 
-                                : 
-                                this.loadData
+                                : this.loadData()
                             }
                         </div>
                         :
