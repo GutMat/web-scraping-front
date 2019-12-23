@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactJson from 'react-json-view'
 import './Transformator.css'
-import { Form, Button, Spinner } from 'react-bootstrap';
+import { Form, Button, Spinner, Tabs, Tab } from 'react-bootstrap';
 
 import Book from '../../components/Book/Book'
 
@@ -54,10 +54,21 @@ class Transformator extends Component {
 
     return (
         <div className="container View">
-
             {this.state.isEnteredValue ? 
                 <div className="Books">
-                    {this.state.isTransformated ? books :
+                    {this.state.isTransformated ? 
+                        <Tabs defaultActiveKey="JSON">
+                            <Tab eventKey="JSON" title="JSON Format">
+                                <div>
+                                    <ReactJson src={this.state.books} theme="summerfruit" />
+                                </div>
+                            </Tab>
+                            <Tab eventKey="cards" title="Cards Format">
+                                <div>
+                                    {books}
+                                </div>
+                            </Tab>
+                        </Tabs> :
                         <div style={{textAlign: "center"}}>
                             <Spinner animation="border" role="status" />
                             <h4 style={{marginTop: '15px'}}>Transformating data...</h4>
@@ -76,8 +87,6 @@ class Transformator extends Component {
                     Transform items
                 </Button>
             </Form>}
-                 
-            {/*<ReactJson src={this.state.books} theme="summerfruit" />*/}
         </div>
     );
    }
