@@ -14,6 +14,7 @@ class Transformator extends Component {
             books: [],
             isEnteredValue: false,
             isTransformated: false,
+            isPrepared: false,
             numberToTransform : 1
         }
 
@@ -29,12 +30,20 @@ class Transformator extends Component {
         const doesEntered = this.state.isEnteredValue;
         this.setState( { isEnteredValue: !doesEntered} );
         const doesTransformated = this.state.isTransformated;
-        let link = "http://localhost:8081/getTransformedItems/" + this.state.numberToTransform;
-        axios.get( link )
+        let transformLink = "http://localhost:8081/getTransformedItems/" + this.state.numberToTransform;
+        axios.get( transformLink )
             .then( response => {
-                this.setState({books: response.data,
-                            isTransformated: !doesTransformated});
+                this.setState({books: response.data, 
+                    isTransformated: !doesTransformated});
             });
+    }
+
+    loadData = () => {
+        const loadLink = "http://localhost:8081/getLoadedItems";
+        const doesPrepared = this.state.isPrepared;
+        axios.get( loadLink ).then(
+            this.setState({isPrepared: !doesPrepared})
+        );
     }
 
    render (){
@@ -57,24 +66,32 @@ class Transformator extends Component {
             {this.state.isEnteredValue ? 
                 <div className="Books">
                     {this.state.isTransformated ? 
-                        <Tabs defaultActiveKey="JSON">
-                            <Tab eventKey="JSON" title="JSON Format">
-                                <div>
-                                    <ReactJson src={this.state.books} theme="summerfruit" />
-                                </div>
-                            </Tab>
-                            <Tab eventKey="cards" title="Cards Format">
-                                <div>
-                                    {books}
-                                </div>
-                            </Tab>
-                        </Tabs> :
+                        <div>
+                            {this.state.isPrepared ? 
+                                <Tabs defaultActiveKey="JSON">
+                                    <Tab eventKey="JSON" title="JSON Format">
+                                        <div>
+                                            <ReactJson src={this.state.books} theme="summerfruit" />
+                                        </div>
+                                    </Tab>
+                                    <Tab eventKey="cards" title="Cards Format">
+                                        <div>
+                                            {books}
+                                        </div>
+                                    </Tab>
+                                </Tabs> 
+                                : 
+                                this.loadData()
+                            }
+                        </div>
+                        :
                         <div style={{textAlign: "center"}}>
                             <Spinner animation="border" role="status" />
                             <h4 style={{marginTop: '15px'}}>Transformating data...</h4>
                         </div>
                     }
-            </div>: 
+            </div>
+            : 
             <Form onSubmit={this.toggleTransformatedItems}>
                 <Form.Group>
                     <Form.Label><h3>Items number</h3></Form.Label>
