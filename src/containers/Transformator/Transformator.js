@@ -16,7 +16,8 @@ class Transformator extends Component {
             isTransformated: false,
             isExtended: false,
             isIndividual: false,
-            numberToTransform : 1
+            numberToTransform : 1,
+            ISBN: null
         }
 
         this.handleValueChange = this.handleValueChange.bind(this);
@@ -53,7 +54,15 @@ class Transformator extends Component {
         this.setState( { isExtended: !doesExtended} );
     }
 
-    toggleSingleBook = () => {
+    toggleSingleBook = (bookIndex) => {
+        const doesIndividual = this.state.isIndividual;
+        let bookISBN = this.state.ISBN;
+        bookISBN = bookIndex;
+        this.setState( { isIndividual: !doesIndividual,
+                        ISBN: bookISBN} );
+    }
+
+    toggleAllBooks = () => {
         const doesIndividual = this.state.isIndividual;
         this.setState( { isIndividual: !doesIndividual} );
     }
@@ -70,8 +79,12 @@ class Transformator extends Component {
                 price={book.bookPrice}
                 JSON={"http://localhost:8081/getSingleBookJSON/" + book.book.isbn}
                 CSV={"http://localhost:8081/getSingleBookCSV/" + book.book.isbn}
-                displaySingle={this.toggleSingleBook} />;
+                displaySingle={() => this.toggleSingleBook(book.book.isbn)} />;
         });
+
+    let book = this.state.books.filter(b => b.book.isbn === this.state.ISBN)
+
+    let bookJSON = <ReactJson src={book} theme="summerfruit" />;
 
 
     return (
@@ -84,8 +97,8 @@ class Transformator extends Component {
                                     <div>
                                         {this.state.isIndividual ?
                                             <div>
-                                                <h3>Individual</h3>
-                                                <Button variant="dark" onClick={this.toggleSingleBook}>
+                                                {bookJSON}
+                                                <Button variant="dark" onClick={this.toggleAllBooks}>
                                                     Back
                                                 </Button>
                                             </div>
