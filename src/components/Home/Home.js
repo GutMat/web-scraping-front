@@ -28,10 +28,6 @@ const home = (props) => (
                         className="btn btn-dark btn-lg"
                         role="button">ETL</Link>
             
-            <Link to="/export-csv" 
-                        className="btn btn-dark btn-lg"
-                        role="button">Export to CSV</Link>
-            
             <Link to="/clean-db" 
                         className="btn btn-dark btn-lg"
                         role="button">Clean database</Link>

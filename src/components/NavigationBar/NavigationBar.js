@@ -45,16 +45,7 @@ const navigationBar = () => (
               <Link to="/extract" className="nav-link">Extract</Link>
           </Nav.Item>
           <Nav.Item>
-              <Link to="/transform" className="nav-link">Transform</Link>
-          </Nav.Item>
-          <Nav.Item>
-              <Link to="/load" className="nav-link">Load to database</Link>
-          </Nav.Item>
-          <Nav.Item>
               <Link to="/etl" className="nav-link">ETL</Link>
-          </Nav.Item>
-          <Nav.Item>
-              <Link to="/export-csv" className="nav-link">Export CSV</Link>
           </Nav.Item>
           <Nav.Item>
               <Link  to="/clean-db" className="nav-link">Clean database</Link>

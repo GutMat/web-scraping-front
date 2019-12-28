@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 
@@ -26,6 +27,18 @@ class Loader extends Component {
             <div>
                 <h3>The transformated data has been successfully loaded to database</h3>
                 <h4>Added {this.state.books.length} books to database</h4>
+                <Link 
+                    to="/export-csv"
+                    className="btn btn-dark btn-lg"
+                    role="button">
+                        Export CSV
+                </Link>
+                <Link 
+                    to="/clean-db"
+                    className="btn btn-dark btn-lg"
+                    role="button">
+                        Clean database
+                </Link>
             </div>
             :                         
             <div style={{textAlign: "center"}}>

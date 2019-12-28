@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactJson from 'react-json-view'
 import './Transformator.css'
@@ -98,14 +99,20 @@ class Transformator extends Component {
                                         {this.state.isIndividual ?
                                             <div>
                                                 {bookJSON}
-                                                <Button variant="dark" onClick={this.toggleAllBooks}>
+                                                <Button className="btn btn-dark btn-lg" onClick={this.toggleAllBooks}>
                                                     Back
                                                 </Button>
                                             </div>
                                         :
                                             <div>
                                                 {books}
-                                                <Button variant="dark" onClick={this.toggleExtendedTransformation}>
+                                                <Link 
+                                                    to="/export-csv"
+                                                    className="btn btn-dark btn-lg"
+                                                    role="button">
+                                                        Export CSV
+                                                </Link>
+                                                <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation}>
                                                     Back
                                                 </Button>
                                             </div>
@@ -115,9 +122,18 @@ class Transformator extends Component {
                                 :
                                     <div>
                                         <ReactJson src={this.state.books} theme="summerfruit" />
-                                        <Button variant="dark" onClick={this.toggleExtendedTransformation}>
-                                            See more
-                                        </Button>
+                                        <div style={{textAlign: 'center', marginTop: '30px'}}>
+                                            <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation}>
+                                                See more
+                                            </Button>
+                                            <Link 
+                                                to="/load" 
+                                                className="btn btn-dark btn-lg"
+                                                role="button">
+                                                Load to database
+                                            </Link>
+                                        </div>
+
                                     </div>    
                             }
                             
