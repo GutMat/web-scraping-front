@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ReactJson from 'react-json-view'
 import axios from 'axios';
 import './Extractor.css'
@@ -69,6 +70,14 @@ class Extractor extends Component {
                     </Accordion.Collapse>
                 </Card>
             </Accordion>
+            <div style={{textAlign: 'center', marginTop: '30px'}}>
+                <Link 
+                    to="/transform" 
+                    className="btn btn-dark btn-lg"
+                    role="button">
+                    Transform
+                </Link>
+            </div>
         </ Styles>
     );
    }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactJson from 'react-json-view'
 import './Transformator.css'
-import { Form, Button, Spinner, Tabs, Tab } from 'react-bootstrap';
+import { Form, Button, Spinner} from 'react-bootstrap';
 
 import Book from '../../components/Book/Book'
 
@@ -14,7 +14,8 @@ class Transformator extends Component {
             books: [],
             isEnteredValue: false,
             isTransformated: false,
-            isPrepared: false,
+            isExtended: false,
+            isIndividual: false,
             numberToTransform : 1
         }
 
@@ -45,6 +46,17 @@ class Transformator extends Component {
             this.setState({isPrepared: !doesPrepared})
         );
     }
+    
+    toggleExtendedTransformation = () => {
+        this.loadData();
+        const doesExtended = this.state.isExtended;
+        this.setState( { isExtended: !doesExtended} );
+    }
+
+    toggleSingleBook = () => {
+        const doesIndividual = this.state.isIndividual;
+        this.setState( { isIndividual: !doesIndividual} );
+    }
 
    render (){
 
@@ -57,7 +69,8 @@ class Transformator extends Component {
                 author={book.book.author}
                 price={book.bookPrice}
                 JSON={"http://localhost:8081/getSingleBookJSON/" + book.book.isbn}
-                CSV={"http://localhost:8081/getSingleBookCSV/" + book.book.isbn} />;
+                CSV={"http://localhost:8081/getSingleBookCSV/" + book.book.isbn}
+                displaySingle={this.toggleSingleBook} />;
         });
 
 
@@ -67,21 +80,34 @@ class Transformator extends Component {
                 <div className="Books">
                     {this.state.isTransformated ? 
                         <div>
-                            {this.state.isPrepared ? 
-                                <Tabs defaultActiveKey="JSON">
-                                    <Tab eventKey="JSON" title="JSON Format">
-                                        <div>
-                                            <ReactJson src={this.state.books} theme="summerfruit" />
-                                        </div>
-                                    </Tab>
-                                    <Tab eventKey="cards" title="Cards Format">
-                                        <div>
-                                            {books}
-                                        </div>
-                                    </Tab>
-                                </Tabs> 
-                                : this.loadData()
+                            {this.state.isExtended ?
+                                    <div>
+                                        {this.state.isIndividual ?
+                                            <div>
+                                                <h3>Individual</h3>
+                                                <Button variant="dark" onClick={this.toggleSingleBook}>
+                                                    Back
+                                                </Button>
+                                            </div>
+                                        :
+                                            <div>
+                                                {books}
+                                                <Button variant="dark" onClick={this.toggleExtendedTransformation}>
+                                                    Back
+                                                </Button>
+                                            </div>
+                                        }
+
+                                    </div>
+                                :
+                                    <div>
+                                        <ReactJson src={this.state.books} theme="summerfruit" />
+                                        <Button variant="dark" onClick={this.toggleExtendedTransformation}>
+                                            See more
+                                        </Button>
+                                    </div>    
                             }
+                            
                         </div>
                         :
                         <div style={{textAlign: "center"}}>

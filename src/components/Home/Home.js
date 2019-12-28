@@ -23,14 +23,6 @@ const home = (props) => (
             <Link to="/extract" 
                         className="btn btn-dark btn-lg"
                         role="button">Extract</Link>
-        
-            <Link to="/transform" 
-                        className="btn btn-dark btn-lg"
-                        role="button">Transform</Link>
-            
-            <Link to="/load" 
-                        className="btn btn-dark btn-lg"
-                        role="button">Load to database</Link>
             
             <Link to="/etl" 
                         className="btn btn-dark btn-lg"
