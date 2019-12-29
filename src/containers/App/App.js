@@ -7,7 +7,6 @@ import Transformator from '../Transformator/Transformator';
 import ETL from '../ETL/ETL';
 import Cleaner from '../Cleaner/Cleaner';
 import Loader from '../Loader/Loader'
-import Exporter from '../Exporter/Exporter';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import Layout from '../../components/Layout/Layout';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
@@ -28,7 +27,6 @@ class App extends Component {
                   <Route path="/transform" component={Transformator} />
                   <Route path="/load" component={Loader} />
                   <Route path="/etl" component={ETL} />
-                  <Route path="/export-csv" component={Exporter} />
                   <Route path="/clean-db" component={Cleaner} />
                   <Route component={ErrorPage} />
               </Switch>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ReactJson from 'react-json-view'
-import './Transformator.css'
+import ReactJson from 'react-json-view';
+import './Transformator.css';
 import { Form, Button, Spinner} from 'react-bootstrap';
 
 import Book from '../../components/Book/Book'
@@ -106,12 +106,7 @@ class Transformator extends Component {
                                         :
                                             <div>
                                                 {books}
-                                                <Link 
-                                                    to="/export-csv"
-                                                    className="btn btn-dark btn-lg"
-                                                    role="button">
-                                                        Export CSV
-                                                </Link>
+                                                <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button">Download CSV</a>
                                                 <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation}>
                                                     Back
                                                 </Button>

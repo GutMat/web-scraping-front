@@ -27,12 +27,7 @@ class Loader extends Component {
             <div>
                 <h3>The transformated data has been successfully loaded to database</h3>
                 <h4>Added {this.state.books.length} books to database</h4>
-                <Link 
-                    to="/export-csv"
-                    className="btn btn-dark btn-lg"
-                    role="button">
-                        Export CSV
-                </Link>
+                <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button">Download CSV</a>
                 <Link 
                     to="/clean-db"
                     className="btn btn-dark btn-lg"
