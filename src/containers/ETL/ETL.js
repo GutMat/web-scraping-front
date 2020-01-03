@@ -65,20 +65,21 @@ class ETL extends Component {
 
     let books = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
     books = this.state.books.map(book => {
-        return <Book 
-            key={book.book.isbn} 
-            title={book.book.title} 
-            publisher={book.book.publisher}
-            author={book.book.author}
-            price={book.bookPrice}
-            JSON={"http://localhost:8081/getSingleBookJSON/" + book.book.isbn}
-            CSV={"http://localhost:8081/getSingleBookCSV/" + book.book.isbn}
-            displaySingle={() => this.toggleSingleBook(book.book.isbn)} />;
+        return <Book key={book.book.isbn} 
+                    title={book.book.title} 
+                    publisher={book.book.publisher}
+                    author={book.book.author}
+                    price={book.bookPrice}
+                    JSON={"http://localhost:8081/getSingleBookJSON/" + book.book.isbn}
+                    CSV={"http://localhost:8081/getSingleBookCSV/" + book.book.isbn}
+                    displaySingle={() => this.toggleSingleBook(book.book.isbn)} />;
     });
 
     let book = this.state.books.filter(b => b.book.isbn === this.state.ISBN)
 
-    let bookJSON = <ReactJson src={book} theme="isotope" style={{width: '950px'}}/>;
+    let bookJSON = <ReactJson src={book} 
+                            theme="isotope" 
+                            style={{width: '950px'}}/>;
 
 
     return (
@@ -92,7 +93,9 @@ class ETL extends Component {
                                         {this.state.isIndividual ?
                                                 <div>
                                                     {bookJSON}
-                                                    <Button className="btn btn-dark btn-lg" onClick={this.toggleAllBooks} style={{margin: '30px 0px'}}>
+                                                    <Button className="btn btn-dark btn-lg" 
+                                                            onClick={this.toggleAllBooks} 
+                                                            style={{margin: '30px 0px'}}>
                                                         Back
                                                     </Button>
                                                 </div>
@@ -102,9 +105,16 @@ class ETL extends Component {
                                                         {books}
                                                     </div>
                                                     <div  style={{textAlign: 'center'}}>
-                                                        <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button" style={{margin: '30px 15px'}}>Download CSV</a>
-                                                        <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation} style={{margin: '30px 15px'}}>
-                                                            Back
+                                                        <a href="http://localhost:8081/getBooksCSV" 
+                                                            class="btn btn-dark btn-lg" 
+                                                            role="button" 
+                                                            style={{margin: '30px 15px'}}>
+                                                            Download CSV
+                                                        </a>
+                                                        <Button className="btn btn-dark btn-lg" 
+                                                                onClick={this.toggleExtendedTransformation} 
+                                                                style={{margin: '30px 15px'}}>
+                                                                Back
                                                         </Button>
                                                     </div>    
                                                 </div>
@@ -113,12 +123,21 @@ class ETL extends Component {
                                     </div>
                                 :
                                     <div>
-                                        <ReactJson src={this.state.books} theme="isotope" groupArraysAfterLength={this.state.groupLength} style={{width: '950px'}}/>
+                                        <ReactJson src={this.state.books} 
+                                                theme="isotope" 
+                                                groupArraysAfterLength={this.state.groupLength} 
+                                                style={{width: '950px'}}/>
                                         <div style={{textAlign: 'center', marginTop: '30px'}}>
-                                            <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation} style={{margin: '15px 10px'}}>
-                                                See more
+                                            <Button className="btn btn-dark btn-lg" 
+                                                    onClick={this.toggleExtendedTransformation} 
+                                                    style={{margin: '15px 10px'}}>
+                                                    See more
                                             </Button>
-                                            <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button" style={{margin: '15px 10px'}}>Download CSV</a>
+                                            <a href="http://localhost:8081/getBooksCSV" 
+                                                class="btn btn-dark btn-lg" role="button" 
+                                                style={{margin: '15px 10px'}}>
+                                                Download CSV
+                                            </a>
                                             <Link 
                                                 to="/clean-db"
                                                 className="btn btn-dark btn-lg"
@@ -133,7 +152,8 @@ class ETL extends Component {
                         </div>
                         :
                         <div style={{textAlign: "center"}}>
-                            <Spinner animation="border" role="status" />
+                            <Spinner animation="border" 
+                                    role="status" />
                             <h4 style={{marginTop: '15px'}}>Preparing data...</h4>
                         </div>
                     }
@@ -141,14 +161,23 @@ class ETL extends Component {
             : 
                 <Form onSubmit={this.toggleETLedItems}>
                     <Form.Group>
-                        <Form.Label><h3>Items number</h3></Form.Label>
-                        <Form.Control size="lg" type="number" min="1" max="120" placeholder="Enter the number of items" value={this.state.numberToETL} onChange={this.handleValueChange}/>
+                        <Form.Label>
+                            <h3>Items number</h3>
+                        </Form.Label>
+                        <Form.Control size="lg" 
+                                    type="number" 
+                                    min="1" 
+                                    max="120" 
+                                    placeholder="Enter the number of items" 
+                                    value={this.state.numberToETL} 
+                                    onChange={this.handleValueChange}/>
                         <Form.Text className="text-muted">
                             Enter the number of items you wanna ETL (1-120)
                         </Form.Text>
                     </Form.Group>
-                    <Button variant="dark" type="submit">
-                        ETL items
+                    <Button variant="dark" 
+                            type="submit">
+                            ETL items
                     </Button>
                 </Form>
             }

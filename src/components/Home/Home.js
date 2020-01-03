@@ -15,24 +15,28 @@ const Styles = styled.div`
 `;
 
 const home = (props) => (
-    <Styles>
-      <div  className="btn-group-vertical Buttons">
-        <Card>
-          <Card.Header as="h2">ETL App</Card.Header>
-        </Card>
-            <Link to="/extract" 
-                        className="btn btn-dark btn-lg"
-                        role="button">Extract</Link>
-            
-            <Link to="/etl" 
-                        className="btn btn-dark btn-lg"
-                        role="button">ETL</Link>
-            
-            <Link to="/clean-db" 
-                        className="btn btn-dark btn-lg"
-                        role="button">Clean database</Link>
-      </div>
-    </Styles>
+  <Styles>
+    <div  className="btn-group-vertical Buttons">
+      <Card>
+        <Card.Header as="h2">ETL App</Card.Header>
+      </Card>
+      <Link to="/extract" 
+            className="btn btn-dark btn-lg"
+            role="button">
+            Extract
+      </Link>
+      <Link to="/etl" 
+            className="btn btn-dark btn-lg"
+            role="button">
+            ETL
+      </Link>      
+      <Link to="/clean-db" 
+            className="btn btn-dark btn-lg"
+            role="button">
+            Clean database
+      </Link>
+    </div>
+  </Styles>
 );
 
 export default home;

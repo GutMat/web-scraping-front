@@ -15,22 +15,23 @@ class Cleaner extends Component {
             .then(this.setState({isDeleted: !doesDeleted}));
     }
 
-   render (){
-    return (
-        <div style={{marginTop: '30px', textAlign: 'center'}}>
-            {this.state.isDeleted ?
-                <div>
-                    <h3>The data has been successfully deleted from database</h3>
-                </div>
-                :                         
-                <div style={{textAlign: "center"}}>
-                    <Spinner animation="border" role="status" />
-                        <h4 style={{marginTop: '15px'}}>Deleting data...</h4>
-                </div>
-            }
-    </div>
-    );
-   }
+    render (){
+        return (
+            <div style={{marginTop: '30px', textAlign: 'center'}}>
+                {this.state.isDeleted ?
+                        <div>
+                            <h3>The data has been successfully deleted from database</h3>
+                        </div>
+                    :                         
+                        <div style={{textAlign: "center"}}>
+                            <Spinner animation="border" 
+                                    role="status" />
+                            <h4 style={{marginTop: '15px'}}>Deleting data...</h4>
+                        </div>
+                }
+            </div>
+        );
+    }
 }
 
 export default Cleaner;

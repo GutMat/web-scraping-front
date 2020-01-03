@@ -20,17 +20,23 @@ class App extends Component {
         <Router>
           <NavigationBar />
           <Layout>
-              <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/extract" component={Extractor} />
-                  <Route path="/transform" component={Transformator} />
-                  <Route path="/load" component={Loader} />
-                  <Route path="/etl" component={ETL} />
-                  <Route path="/clean-db" component={Cleaner} />
-                  <Route component={ErrorPage} />
-              </Switch>
-            </Layout>
-            <Footer />   
+            <Switch>
+              <Route exact path="/"
+                    component={Home} />
+              <Route path="/extract" 
+                    component={Extractor} />
+              <Route path="/transform" 
+                    component={Transformator} />
+              <Route path="/load" 
+                    component={Loader} />
+              <Route path="/etl" 
+                    component={ETL} />
+              <Route path="/clean-db" 
+                    component={Cleaner} />
+              <Route component={ErrorPage} />
+            </Switch>
+          </Layout>
+          <Footer />   
         </Router>
       </React.Fragment>  
     );

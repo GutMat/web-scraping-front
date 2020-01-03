@@ -34,21 +34,38 @@ const Styles = styled.div`
 const navigationBar = () => (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand><Link to="/" className="nav-link">ETL App</Link></Navbar.Brand>
+      <Navbar.Brand>
+        <Link to="/" 
+              className="nav-link">
+              ETL App
+        </Link>
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Item>
-              <Link to="/" className="nav-link">Main page</Link>
+            <Link to="/" 
+                  className="nav-link">
+                  Main page
+            </Link>
           </Nav.Item>
           <Nav.Item>
-              <Link to="/extract" className="nav-link">Extract</Link>
+            <Link to="/extract" 
+                  className="nav-link">
+                  Extract
+            </Link>
           </Nav.Item>
           <Nav.Item>
-              <Link to="/etl" className="nav-link">ETL</Link>
+            <Link to="/etl" 
+                  className="nav-link">
+                  ETL
+            </Link>
           </Nav.Item>
           <Nav.Item>
-              <Link  to="/clean-db" className="nav-link">Clean database</Link>
+            <Link to="/clean-db"
+                  className="nav-link">
+                  Clean database
+            </Link>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>
