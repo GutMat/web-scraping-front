@@ -18,7 +18,8 @@ class Transformator extends Component {
             isExtended: false,
             isIndividual: false,
             numberToTransform : 1,
-            ISBN: null
+            ISBN: null,
+            groupLength: 1
         }
 
         this.handleValueChange = this.handleValueChange.bind(this);
@@ -48,7 +49,7 @@ class Transformator extends Component {
             this.setState({isPrepared: !doesPrepared})
         );
     }
-    
+
     toggleExtendedTransformation = () => {
         this.loadData();
         const doesExtended = this.state.isExtended;
@@ -85,13 +86,13 @@ class Transformator extends Component {
 
     let book = this.state.books.filter(b => b.book.isbn === this.state.ISBN)
 
-    let bookJSON = <ReactJson src={book} theme="summerfruit" />;
+    let bookJSON = <ReactJson src={book} theme="isotope" style={{width: '950px'}}/>;
 
 
     return (
         <div className="container View">
             {this.state.isEnteredValue ? 
-                <div className="Books">
+                <div>
                     {this.state.isTransformated ? 
                         <div>
                             {this.state.isExtended ?
@@ -99,32 +100,37 @@ class Transformator extends Component {
                                         {this.state.isIndividual ?
                                             <div>
                                                 {bookJSON}
-                                                <Button className="btn btn-dark btn-lg" onClick={this.toggleAllBooks}>
+                                                <Button className="btn btn-dark btn-lg" onClick={this.toggleAllBooks} style={{margin: '30px 0px'}}>
                                                     Back
                                                 </Button>
                                             </div>
                                         :
                                             <div>
-                                                {books}
-                                                <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button">Download CSV</a>
-                                                <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation}>
-                                                    Back
-                                                </Button>
+                                                <div className="Books">
+                                                    {books}
+                                                </div>
+                                                <div  style={{textAlign: 'center'}}>
+                                                    <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button" style={{margin: '30px 15px'}}>Download CSV</a>
+                                                    <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation} style={{margin: '30px 15px'}}>
+                                                        Back
+                                                    </Button>
+                                                </div>
                                             </div>
                                         }
 
                                     </div>
                                 :
                                     <div>
-                                        <ReactJson src={this.state.books} theme="summerfruit" />
-                                        <div style={{textAlign: 'center', marginTop: '30px'}}>
-                                            <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation}>
+                                        <ReactJson src={this.state.books} theme="isotope" groupArraysAfterLength={this.state.groupLength} style={{width: '950px'}}/>
+                                        <div style={{textAlign: 'center'}}>
+                                            <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation} style={{margin: '30px 15px'}}>
                                                 See more
                                             </Button>
                                             <Link 
                                                 to="/load" 
                                                 className="btn btn-dark btn-lg"
-                                                role="button">
+                                                role="button"
+                                                style={{margin: '30px 15px'}}>
                                                 Load to database
                                             </Link>
                                         </div>

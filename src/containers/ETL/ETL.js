@@ -18,7 +18,8 @@ class ETL extends Component {
             isExtended: false,
             isIndividual: false,
             numberToETL : 1,
-            ISBN: null
+            ISBN: null,
+            groupLength: 1
     }
 
         this.handleValueChange = this.handleValueChange.bind(this);
@@ -77,13 +78,13 @@ class ETL extends Component {
 
     let book = this.state.books.filter(b => b.book.isbn === this.state.ISBN)
 
-    let bookJSON = <ReactJson src={book} theme="summerfruit" />;
+    let bookJSON = <ReactJson src={book} theme="isotope" style={{width: '950px'}}/>;
 
 
     return (
         <div className="container View">
             {this.state.isEnteredValue ? 
-                <div className="Books">
+                <div>
                     {this.state.isETLed ? 
                         <div>
                             {this.state.isExtended ?
@@ -91,33 +92,38 @@ class ETL extends Component {
                                         {this.state.isIndividual ?
                                                 <div>
                                                     {bookJSON}
-                                                    <Button className="btn btn-dark btn-lg" onClick={this.toggleAllBooks}>
+                                                    <Button className="btn btn-dark btn-lg" onClick={this.toggleAllBooks} style={{margin: '30px 0px'}}>
                                                         Back
                                                     </Button>
                                                 </div>
                                             :
                                                 <div>
-                                                    {books}
-                                                    <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button">Download CSV</a>
-                                                    <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation}>
-                                                        Back
-                                                    </Button>
+                                                    <div className="Books">
+                                                        {books}
+                                                    </div>
+                                                    <div  style={{textAlign: 'center'}}>
+                                                        <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button" style={{margin: '30px 15px'}}>Download CSV</a>
+                                                        <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation} style={{margin: '30px 15px'}}>
+                                                            Back
+                                                        </Button>
+                                                    </div>    
                                                 </div>
                                         }
 
                                     </div>
                                 :
                                     <div>
-                                        <ReactJson src={this.state.books} theme="summerfruit" />
+                                        <ReactJson src={this.state.books} theme="isotope" groupArraysAfterLength={this.state.groupLength} style={{width: '950px'}}/>
                                         <div style={{textAlign: 'center', marginTop: '30px'}}>
-                                            <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation}>
+                                            <Button className="btn btn-dark btn-lg" onClick={this.toggleExtendedTransformation} style={{margin: '15px 10px'}}>
                                                 See more
                                             </Button>
-                                            <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button">Download CSV</a>
+                                            <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button" style={{margin: '15px 10px'}}>Download CSV</a>
                                             <Link 
                                                 to="/clean-db"
                                                 className="btn btn-dark btn-lg"
-                                                role="button">
+                                                role="button"
+                                                style={{margin: '15px 10px'}}>
                                                 Clean database
                                             </Link>
                                         </div>
@@ -136,7 +142,7 @@ class ETL extends Component {
                 <Form onSubmit={this.toggleETLedItems}>
                     <Form.Group>
                         <Form.Label><h3>Items number</h3></Form.Label>
-                        <Form.Control size="lg" type="number" min="1" max="120" placeholder="Enter the number of items" value={this.state.numbertToETL} onChange={this.handleValueChange}/>
+                        <Form.Control size="lg" type="number" min="1" max="120" placeholder="Enter the number of items" value={this.state.numberToETL} onChange={this.handleValueChange}/>
                         <Form.Text className="text-muted">
                             Enter the number of items you wanna ETL (1-120)
                         </Form.Text>

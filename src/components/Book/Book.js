@@ -2,8 +2,6 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
-import './Book.css';
-
 const Styles = styled.div`
   a {
     color: gray;
@@ -26,7 +24,7 @@ const book = (props) => (
                 <div style={{ position: 'absolute', bottom: '15px'}}>
                     <Card.Link href={props.JSON}>Export JSON</Card.Link>
                     <Card.Link href={props.CSV}>Export CSV</Card.Link>
-                    <Button variant="dark" onClick={props.displaySingle}>See more</Button>
+                    <Button variant="dark" onClick={props.displaySingle} style={{marginLeft: '20px', marginBottom: '5px'}}>See more</Button>
                 </div>
             </Card.Body>
         </Card>

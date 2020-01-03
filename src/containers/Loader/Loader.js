@@ -27,11 +27,12 @@ class Loader extends Component {
             <div>
                 <h3>The transformated data has been successfully loaded to database</h3>
                 <h4>Added {this.state.books.length} books to database</h4>
-                <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button">Download CSV</a>
+                <a href="http://localhost:8081/getBooksCSV" class="btn btn-dark btn-lg" role="button" style={{margin: '30px 15px'}}>Download CSV</a>
                 <Link 
                     to="/clean-db"
                     className="btn btn-dark btn-lg"
-                    role="button">
+                    role="button"
+                    style={{margin: '30px 15px'}}>
                         Clean database
                 </Link>
             </div>

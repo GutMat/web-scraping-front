@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactJson from 'react-json-view'
 import axios from 'axios';
-import './Extractor.css'
 import { Card, Accordion, Button, Spinner } from 'react-bootstrap';
 import styled from 'styled-components';
 
@@ -20,7 +19,8 @@ class Extractor extends Component {
 
     state = {
         isExtracted: false,
-        nodes: []
+        nodes: [], 
+        groupLength: 10
     }
 
     componentDidMount() {
@@ -71,7 +71,7 @@ class Extractor extends Component {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="2">
-                                <Card.Body className="bg-secondary"><ReactJson src={this.state.nodes} theme="summerfruit" /></Card.Body>
+                                <Card.Body className="bg-secondary"><ReactJson src={this.state.nodes} theme="isotope" groupArraysAfterLength={this.state.groupLength} /></Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
